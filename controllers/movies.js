@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 const Movie = require('../models/movieSchema');
 const {
   OK,
@@ -12,8 +13,9 @@ const NotFoundError = require('../errors/NotFoundError');
 const ForbiddenError = require('../errors/ForbiddenError');
 
 module.exports.getMyMovies = (req, res, next) => {
-  const { _id } = req.user;
-  Movie.find({ owner: _id }).then((movies) => res.send(movies))
+  Movie
+    .find({})
+    .then((movies) => res.send(movies))
     .catch(next);
 };
 
@@ -53,15 +55,16 @@ module.exports.createMovie = (req, res, next) => {
 module.exports.deleteMovie = (req, res, next) => {
   const { _id } = req.params;
 
-  Movie.findById(_id).then((movie) => {
-    if (!movie) {
+  Movie.findById(_id).then((item) => {
+    if (!item) {
       throw new NotFoundError(NOTFOUND_MOVIE);
     }
-    if (movie.owner.toString() !== req.user._id) {
+    if (item.owner.toString() !== req.user._id) {
       throw new ForbiddenError(ACCESS_DENIED);
     }
     Movie
       .findByIdAndRemove(_id)
+      // eslint-disable-next-line no-shadow
       .then((item) => {
         if (!item) {
           throw new NotFoundError(NOTFOUND_MOVIE);

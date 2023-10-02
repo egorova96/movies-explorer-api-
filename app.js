@@ -1,20 +1,20 @@
+/* eslint-disable import/order */
 /* eslint-disable import/no-extraneous-dependencies */
 require('dotenv').config();
 const express = require('express');
-const helmet = require('helmet');
-
-const app = express();
 const mongoose = require('mongoose');
 
-const { PORT = 3000, DATABASE_URL } = process.env;
-mongoose.connect(DATABASE_URL);
-
+const { PORT = 3000, DATABASE_URL = 'mongodb://127.0.0.1:27017/bitfilmsdb' } = process.env;
+const app = express();
+const helmet = require('helmet');
 const { errors } = require('celebrate');
-const routes = require('routes');
 const cors = require('cors');
 const limiter = require('./middlewares/limiter');
+const routes = require('routes');
 const errorHandler = require('./middlewares/errorHandler');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
+
+mongoose.connect(DATABASE_URL);
 
 app.use(errors());
 app.use(helmet());

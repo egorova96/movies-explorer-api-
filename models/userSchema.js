@@ -1,5 +1,8 @@
+/* eslint-disable func-names */
+/* eslint-disable linebreak-style */
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable import/no-unresolved */
+
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const isEmail = require('validator/lib/isEmail');

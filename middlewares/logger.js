@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 /* eslint-disable import/no-extraneous-dependencies */
 const winston = require('winston');
 const expressWinston = require('express-winston');

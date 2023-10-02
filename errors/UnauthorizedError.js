@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 const { UNAUTHORIZED_ERROR } = require('../utils/constants');
 
 class UnauthorizedError extends Error {

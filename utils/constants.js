@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 const OK = 201;
 const STATUS_CODE = 200;
 const VALIDATION_ERROR = 400;

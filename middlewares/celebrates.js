@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 const { celebrate, Joi } = require('celebrate');
 const { REGEX_URL } = require('../utils/constants');
 

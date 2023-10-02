@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 /* eslint-disable no-shadow */
 const { NODE_ENV, JWT_SECRET } = process.env;
 const bcrypt = require('bcrypt');
@@ -56,36 +57,36 @@ module.exports.updateUser = (req, res, next) => {
       }
       return next(err);
     });
+};
 
-  module.exports.createUser = (req, res, next) => {
-    const {
-      name,
-      email,
-      password,
-    } = req.body;
-    bcrypt.hash(password, 10)
-      .then((hash) => User.create(
-        {
-          name, email, password: hash,
-        },
-      )).then((user) => {
-        res
-          .status(OK)
-          .send({
-            data: {
-              name: user.name,
-              email: user.email,
-              _id: user._id,
-            },
-          });
-      }).catch((err) => {
-        if (err.name === 'ValidationError') {
-          return next(new ValidationError(INCORRECT_DATA_ERROR));
-        }
-        if (err.code === 11000) {
-          return next(new ConflictError(USER_EMAIL_EXIST));
-        }
-        return next(err);
-      });
-  };
+module.exports.createUser = (req, res, next) => {
+  const {
+    name,
+    email,
+    password,
+  } = req.body;
+  bcrypt.hash(password, 10)
+    .then((hash) => User.create(
+      {
+        name, email, password: hash,
+      },
+    )).then((user) => {
+      res
+        .status(OK)
+        .send({
+          data: {
+            name: user.name,
+            email: user.email,
+            _id: user._id,
+          },
+        });
+    }).catch((err) => {
+      if (err.name === 'ValidationError') {
+        return next(new ValidationError(INCORRECT_DATA_ERROR));
+      }
+      if (err.code === 11000) {
+        return next(new ConflictError(USER_EMAIL_EXIST));
+      }
+      return next(err);
+    });
 };

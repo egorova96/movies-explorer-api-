@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 const { VALIDATION_ERROR } = require('../utils/constants');
 
 class ValidationError extends Error {

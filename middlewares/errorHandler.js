@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 const { ERRORHANDLER_MESSAGE, SERVER_ERROR } = require('../utils/constants');
 
 const errorHandler = (err, req, res, next) => {

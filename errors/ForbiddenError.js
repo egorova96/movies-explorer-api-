@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 const { FORBIDDEN_ERROR } = require('../utils/constants');
 
 class ForbiddenError extends Error {
