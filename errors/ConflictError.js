@@ -1,4 +1,3 @@
-/* eslint-disable linebreak-style */
 const { CONFLICT_ERROR } = require('../utils/constants');
 
 class ConflictError extends Error {
@@ -7,4 +6,5 @@ class ConflictError extends Error {
     this.statusCode = CONFLICT_ERROR;
   }
 }
+
 module.exports = ConflictError;

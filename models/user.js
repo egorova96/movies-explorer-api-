@@ -1,51 +1,48 @@
-/* eslint-disable func-names */
-/* eslint-disable linebreak-style */
-/* eslint-disable import/no-extraneous-dependencies */
-/* eslint-disable import/no-unresolved */
-
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const isEmail = require('validator/lib/isEmail');
-const { INCORRECT_EMAIL, INCORRECT_CREDENTIALS } = require('../utils/constants');
-const ValidationError = require('../errors/ValidationError');
+const UnauthorizedError = require('../errors/UnauthorizedError');
+const { INCORRECT_ERROR, INCORRECT_EMAIL } = require('../utils/constants');
 
 const userSchema = new mongoose.Schema({
   name: {
+    type: String,
     minlength: 2,
     maxlength: 30,
-    type: String,
   },
   email: {
+    type: String,
     required: true,
     unique: true,
     validate: {
       validator: (email) => isEmail(email),
       message: INCORRECT_EMAIL,
     },
-    type: String,
   },
   password: {
+    type: String,
     required: true,
     select: false,
-    type: String,
   },
 }, { versionKey: false });
 
+// eslint-disable-next-line func-names
 userSchema.statics.findUserByCredentials = function (email, password) {
   return this.findOne({ email }).select('+password')
     .then((user) => {
       if (!user) {
-        throw new ValidationError(INCORRECT_CREDENTIALS);
+        throw new UnauthorizedError(INCORRECT_ERROR);
       }
 
       return bcrypt.compare(password, user.password)
         .then((matched) => {
           if (!matched) {
-            throw new ValidationError(INCORRECT_CREDENTIALS);
+            throw new UnauthorizedError(INCORRECT_ERROR);
           }
 
           return user;
         });
     });
 };
+
 module.exports = mongoose.model('user', userSchema);

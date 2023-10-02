@@ -1,4 +1,3 @@
-/* eslint-disable linebreak-style */
 const { NOT_FOUND_ERROR } = require('../utils/constants');
 
 class NotFoundError extends Error {
@@ -7,4 +6,5 @@ class NotFoundError extends Error {
     this.statusCode = NOT_FOUND_ERROR;
   }
 }
+
 module.exports = NotFoundError;

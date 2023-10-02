@@ -1,16 +1,17 @@
-/* eslint-disable linebreak-style */
-const { ERRORHANDLER_MESSAGE, SERVER_ERROR } = require('../utils/constants');
+const { SERVER_NOT_WORKING } = require('../utils/constants');
 
 const errorHandler = (err, req, res, next) => {
-  const { statusCode = SERVER_ERROR, message } = err;
+  const { statusCode = 500, message } = err;
+
   res
     .status(statusCode)
     .send({
-      message: statusCode === SERVER_ERROR
-        ? ERRORHANDLER_MESSAGE
+      message: statusCode === 500
+        ? SERVER_NOT_WORKING
         : message,
     });
 
   next();
 };
+
 module.exports = errorHandler;

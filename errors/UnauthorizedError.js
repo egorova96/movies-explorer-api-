@@ -1,4 +1,3 @@
-/* eslint-disable linebreak-style */
 const { UNAUTHORIZED_ERROR } = require('../utils/constants');
 
 class UnauthorizedError extends Error {
@@ -7,4 +6,5 @@ class UnauthorizedError extends Error {
     this.statusCode = UNAUTHORIZED_ERROR;
   }
 }
+
 module.exports = UnauthorizedError;

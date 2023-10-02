@@ -1,4 +1,3 @@
-/* eslint-disable linebreak-style */
 const { FORBIDDEN_ERROR } = require('../utils/constants');
 
 class ForbiddenError extends Error {
@@ -7,4 +6,5 @@ class ForbiddenError extends Error {
     this.statusCode = FORBIDDEN_ERROR;
   }
 }
+
 module.exports = ForbiddenError;

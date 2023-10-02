@@ -1,14 +1,10 @@
 const router = require('express').Router();
 const celebrate = require('../middlewares/celebrates');
-// eslint-disable-next-line linebreak-style
-
 const usersRouter = require('./users');
 const movieRouter = require('./movies');
-
 const { auth } = require('../middlewares/auth');
 const { login, createUser } = require('../controllers/users');
 const NotFoundError = require('../errors/NotFoundError');
-
 const { RESOURCE_ERROR } = require('../utils/constants');
 
 router.post('/signup', celebrate.createUser, createUser);

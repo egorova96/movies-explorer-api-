@@ -1,13 +1,12 @@
-/* eslint-disable linebreak-style */
 const router = require('express').Router();
 const celebrate = require('../middlewares/celebrates');
 const {
-  getMyMovies,
+  getMovies,
   createMovie,
   deleteMovie,
 } = require('../controllers/movies');
 
-router.get('/movies', getMyMovies);
+router.get('/movies', getMovies);
 
 router.post('/movies', celebrate.createMovie, createMovie);
 

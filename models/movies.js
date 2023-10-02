@@ -1,70 +1,69 @@
-/* eslint-disable linebreak-style */
-/* eslint-disable import/no-extraneous-dependencies */
 const mongoose = require('mongoose');
 const isUrl = require('validator/lib/isURL');
 const { INCORRECT_URL } = require('../utils/constants');
 
 const movieSchema = new mongoose.Schema({
   country: {
-    required: true,
     type: String,
+    required: true,
   },
   director: {
-    required: true,
     type: String,
+    required: true,
   },
   duration: {
-    required: true,
     type: Number,
+    required: true,
   },
   year: {
-    required: true,
     type: String,
+    required: true,
   },
   description: {
-    required: true,
     type: String,
+    required: true,
   },
   image: {
+    type: String,
     required: true,
     validate: {
       validator: (url) => isUrl(url),
       message: INCORRECT_URL,
     },
-    type: String,
   },
   trailerLink: {
+    type: String,
     required: true,
     validate: {
       validator: (url) => isUrl(url),
       message: INCORRECT_URL,
     },
-    type: String,
   },
   thumbnail: {
+    type: String,
     required: true,
     validate: {
       validator: (url) => isUrl(url),
       message: INCORRECT_URL,
     },
-    type: String,
   },
   owner: {
+    type: mongoose.SchemaTypes.ObjectId,
     ref: 'user',
     required: true,
-    type: mongoose.SchemaTypes.ObjectId,
   },
   movieId: {
-    required: true,
     type: Number,
+    required: true,
   },
   nameRU: {
-    required: true,
     type: String,
+    required: true,
   },
   nameEN: {
-    required: true,
     type: String,
+    required: true,
   },
 }, { versionKey: false });
+
 module.exports = mongoose.model('movie', movieSchema);
