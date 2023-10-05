@@ -3,11 +3,12 @@ const { NODE_ENV, JWT_SECRET } = process.env;
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/user');
+
 const {
-  STATUS_OK,
-  USER_NOT_FOUND,
+  OK,
   INCORRECT_DATA_ERROR,
   USER_EMAIL_EXIST,
+  NOTFOUND_USER,
 } = require('../utils/constants');
 
 const ValidationError = require('../errors/ValidationError');
@@ -34,7 +35,7 @@ module.exports.getUserById = (req, res, next) => {
     .findById(_id)
     .then((user) => {
       if (!user) {
-        throw new NotFoundError(USER_NOT_FOUND);
+        throw new NotFoundError(NOTFOUND_USER);
       }
       res.send(user);
     })
@@ -54,7 +55,7 @@ module.exports.createUser = (req, res, next) => {
     ))
     .then((user) => {
       res
-        .status(STATUS_OK)
+        .status(OK)
         .send({
           data: {
             name: user.name,
@@ -83,7 +84,7 @@ module.exports.updateUser = (req, res, next) => {
     // eslint-disable-next-line consistent-return
     .then((user) => {
       if (!user) {
-        throw new NotFoundError(USER_NOT_FOUND);
+        throw new NotFoundError(NOTFOUND_USER);
       }
       res.send(user);
     })

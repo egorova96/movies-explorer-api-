@@ -1,46 +1,45 @@
+const OK = 201;
+const STATUS_CODE = 200;
 const VALIDATION_ERROR = 400;
 const UNAUTHORIZED_ERROR = 401;
 const FORBIDDEN_ERROR = 403;
 const NOT_FOUND_ERROR = 404;
 const CONFLICT_ERROR = 409;
 const SERVER_ERROR = 500;
-const STATUS_CODE = 200;
-const STATUS_OK = 201;
 
-const RESOURCE_ERROR = 'Запрашиваемый ресурс не найден';
-const INCORRECT_ERROR = 'Неправильные почта или пароль';
-const SERVER_NOT_WORKING = 'На сервере произошла ошибка';
-const AUTHORIZATION = 'Необходима авторизация';
-const USER_NOT_FOUND = 'Запрашиваемый пользователь не найден';
-const INCORRECT_DATA_ERROR = 'Переданы некорректные данные';
-const USER_EMAIL_EXIST = 'Пользователь с такой почтой уже существует';
-const MOVIES_NOT_FOUND = 'Фильм не найден';
-const NO_ACCESS_RIGHTS = 'Недостаточно прав доступа';
-const INCORRECT_URL = 'Некорректный адрес ссылки';
+const REGEX_URL = /https*:\/\/[\w\S]{1,}\.[\w\S]{1,}/;
+
+const AUTHORIZATION = 'Необходимо войти на сайт';
+const NOTFOUND_USER = 'Пользователь не найден';
+const INCORRECT_DATA_ERROR = 'Введенные данные некорректны';
+const USER_EMAIL_EXIST = 'Указанный email уже существует';
+const NOTFOUND_MOVIE = 'Фильм не найден';
+const ACCESS_DENIED = 'Недостаточно прав доступа';
+const INCORRECT_URL = 'Некорректная ссылка';
 const INCORRECT_EMAIL = 'Некорректный email';
-
-// eslint-disable-next-line no-useless-escape
-const REGEX_URL = /^(https?:\/\/)?([a-z0-9\-]+\.)+[a-z]{2,6}([\/\?\#][^\s]*)?$/;
+const RESOURCE_ERROR = 'Запрашиваемый ресурс не найден';
+const INCORRECT_CREDENTIALS = 'Неправильная почта или пароль';
+const ERRORHANDLER_MESSAGE = 'Ошибка сервера';
 
 module.exports = {
+  OK,
+  STATUS_CODE,
+  REGEX_URL,
   VALIDATION_ERROR,
   UNAUTHORIZED_ERROR,
   FORBIDDEN_ERROR,
   NOT_FOUND_ERROR,
   CONFLICT_ERROR,
   SERVER_ERROR,
-  STATUS_CODE,
-  STATUS_OK,
-  REGEX_URL,
   RESOURCE_ERROR,
-  INCORRECT_ERROR,
-  SERVER_NOT_WORKING,
+  INCORRECT_CREDENTIALS,
+  ERRORHANDLER_MESSAGE,
   AUTHORIZATION,
-  USER_NOT_FOUND,
+  NOTFOUND_USER,
   INCORRECT_DATA_ERROR,
   USER_EMAIL_EXIST,
-  MOVIES_NOT_FOUND,
-  NO_ACCESS_RIGHTS,
+  NOTFOUND_MOVIE,
+  ACCESS_DENIED,
   INCORRECT_URL,
   INCORRECT_EMAIL,
 };

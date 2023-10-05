@@ -1,13 +1,13 @@
-const { SERVER_NOT_WORKING } = require('../utils/constants');
+const { ERRORHANDLER_MESSAGE, SERVER_ERROR } = require('../utils/constants');
 
 const errorHandler = (err, req, res, next) => {
-  const { statusCode = 500, message } = err;
+  const { statusCode = SERVER_ERROR, message } = err;
 
   res
     .status(statusCode)
     .send({
       message: statusCode === 500
-        ? SERVER_NOT_WORKING
+        ? ERRORHANDLER_MESSAGE
         : message,
     });
 
